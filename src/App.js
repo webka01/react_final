@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { AppBarComponent } from './components/AppBarComponent'
+import { Content } from './components/content'
+import { SignIn } from './components/Signin';
+import { SignUp } from './components/Signup';
+import { Calendar } from './components/Calendar';
+import { Footer } from './components/footer';
+import {AppBarComponentLogout} from './components/AppBarWithLogout';
+import { UserData } from './components/UserPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<><AppBarComponent /><Footer/></>} />
+          <Route path="main" element={<><AppBarComponentLogout /><Content/></>}/>
+          <Route path="signin" element={<SignIn/>}/>
+          <Route path="signup" element={<SignUp/>}/>
+          <Route path="renttime" element={<Calendar/>}/>
+          <Route path="me" element={<UserData/>}/>
+          
+        </Routes>
+
+        
+      </BrowserRouter>
+
+
     </div>
   );
 }
